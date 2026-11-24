@@ -1,0 +1,23 @@
+# The register itself. It holds patient names, addresses and clinical findings
+# and must never be committed, pushed or shared.
+*-data.json
+pcpndt-form-f-register-monthly-data.json
+.register-*.json
+
+# Built binaries
+form-f-register
+pcpndt-form-f-register-monthly
+/dist/
+
+# Go
+*.test
+*.out
+coverage.*
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/

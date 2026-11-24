@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self'">
+  <title>PCPNDT Form F register for ultrasound clinics · Open MSME</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/accent.css">
+  <link rel="stylesheet" href="assets/register.css">
+  <script src="assets/theme-init.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <span class="brand"><span class="dot"></span><b>Form F register</b><span class="tag">local only</span></span>
+      <span class="sp"></span>
+      <span class="pill" id="file-note">this machine only</span>
+      <button class="themer" data-themer type="button">Theme</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero compact">
+      <div class="wrap">
+        <div class="eyebrow">PC&amp;PNDT Act 1994 · rule 9(4) · rule 9(8)</div>
+        <h1>PCPNDT Form F register and monthly report for ultrasound clinics</h1>
+        <p class="lede">Every procedure gets a Form F with every prescribed item checked at once, the register runs in unbroken serial order, and the month's report is assembled from exactly the entries dated in it.</p>
+        <div class="policy" id="policy-banner">
+          <h2>What this register will not hold</h2>
+          <p id="policy-text">Loading.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <nav class="seg tabs" id="tabs" aria-label="Sections">
+        <button type="button" data-tab="entry" aria-pressed="true">New entry</button>
+        <button type="button" data-tab="register" aria-pressed="false">Register</button>
+        <button type="button" data-tab="month" aria-pressed="false">The month</button>
+        <button type="button" data-tab="settings" aria-pressed="false">Centre &amp; settings</button>
+      </nav>
+
+      <p class="banner" id="banner" hidden></p>
+
+      <!-- ------------------------------------------------ new entry -->
+      <div class="panel" id="panel-entry">
+        <div class="cols calc">
+          <section class="card">
+            <h2 id="entry-heading">Form F — new entry</h2>
+            <p class="note" id="entry-scope">This register keeps Sections A, B and D of Form F, which are the sections an ultrasound clinic or imaging centre fills in. Section C covers the invasive procedures carried out at a genetic clinic and is not reproduced here.</p>
+            <form id="entry-form" autocomplete="off">
+              <div id="entry-fields"></div>
+              <div class="btnrow">
+                <button class="btn primary" type="submit" id="entry-save">Save this entry</button>
+                <button class="btn ghost" type="button" id="entry-check">Check it now</button>
+                <button class="btn ghost" type="button" id="entry-reset">Start a fresh entry</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="card sticky">
+            <h2>Completeness</h2>
+            <div class="result-primary">
+              <div class="k">Items filled in</div>
+              <div class="v" id="check-count">—</div>
+              <div class="sub" id="check-summary">Fill the form and the whole shortfall appears here at once.</div>
+            </div>
+            <div id="check-issues"></div>
+            <details class="assumptions">
+              <summary>Why a blank matters</summary>
+              <p id="consequences">Loading.</p>
+            </details>
+          </section>
+        </div>
+      </div>
+
+      <!-- ------------------------------------------------ register -->
+      <div class="panel" id="panel-register" hidden>
+        <section class="card">
+          <h2>Register under rule 9(1)</h2>
+          <p class="note" id="register-note">Entries in serial order with the columns rule 9(1) prescribes, followed by three of this register's own.</p>
+          <div id="register-status"></div>
+          <div class="scroll"><table class="breakdown" id="register-table"></table></div>
+          <div class="btnrow">
+            <button class="btn ghost" type="button" id="register-print">Print this page</button>
+            <a class="btn ghost" href="/api/text/register" id="register-text">Plain-text copy</a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Entries</h2>
+          <p class="note">Entries can be corrected but never removed: a gap in the numbering reads as a removed record, so this tool has no way to make one.</p>
+          <div id="entry-list"></div>
+        </section>
+
+        <section class="card" id="face-card" hidden>
+          <h2 id="face-heading">Form F face</h2>
+          <p class="note">Read this against the signed paper form, the declarations, the referral slip and the case papers. Items marked <b>!</b> are blank.</p>
+          <div class="scroll"><table class="breakdown" id="face-table"></table></div>
+          <p class="src" id="face-note"></p>
+          <div class="btnrow">
+            <button class="btn ghost" type="button" id="face-edit">Correct this entry</button>
+            <a class="btn ghost" href="/api/text/entry" id="face-text">Plain-text copy</a>
+          </div>
+        </section>
+      </div>
+
+      <!-- ------------------------------------------------ the month -->
+      <div class="panel" id="panel-month" hidden>
+        <section class="card">
+          <h2>The month's report</h2>
+          <div class="row2">
+            <div class="field">
+              <label for="month-pick">Month</label>
+              <select id="month-pick"></select>
+            </div>
+            <div class="field">
+              <label for="month-due">Due with the Appropriate Authority</label>
+              <div class="inp"><input type="text" id="month-due" readonly></div>
+            </div>
+          </div>
+          <div class="result-primary">
+            <div class="k">Form F entries dated in the month</div>
+            <div class="v" id="month-count">—</div>
+            <div class="sub" id="month-state">Pick a month.</div>
+          </div>
+          <div id="month-blockers"></div>
+          <div class="btnrow">
+            <button class="btn ghost" type="button" id="month-print">Print this page</button>
+            <a class="btn ghost" href="/api/text/month" id="month-text">Plain-text copy</a>
+          </div>
+          <details class="assumptions">
+            <summary>What rule 9(8) asks for, and what it does not say</summary>
+            <p id="month-rule">Loading.</p>
+            <p id="month-format">Loading.</p>
+          </details>
+        </section>
+
+        <section class="card">
+          <h2>The centre's own day count</h2>
+          <p class="note">A Form F that was never written is invisible to a register that does not hold it. Enter the day's count from the OPD register, the appointment book or the machine log, and the month is reconciled against it. Record a quiet day as nil: a silent month and a nil month look the same from outside, and only one of them is a record.</p>
+          <form id="tally-form" autocomplete="off">
+            <div class="row2">
+              <div class="field">
+                <label for="tally-date">Date</label>
+                <div class="inp"><input type="date" id="tally-date" required></div>
+              </div>
+              <div class="field">
+                <label for="tally-count">Procedures carried out</label>
+                <div class="inp"><input type="number" id="tally-count" min="0" step="1" required></div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="tally-source">Where the count came from <span class="hint">OPD register, appointment book, machine log</span></label>
+              <div class="inp"><input type="text" id="tally-source" placeholder="OPD register"></div>
+            </div>
+            <div class="btnrow"><button class="btn primary" type="submit">Record the day</button></div>
+          </form>
+        </section>
+
+        <section class="card">
+          <h2>Day by day</h2>
+          <div class="scroll"><table class="breakdown" id="month-days"></table></div>
+        </section>
+
+        <section class="card">
+          <h2>Totals on the face of the report</h2>
+          <div id="month-totals"></div>
+        </section>
+      </div>
+
+      <!-- ------------------------------------------------ settings -->
+      <div class="panel" id="panel-settings" hidden>
+        <div class="cols calc">
+          <section class="card">
+            <h2>The centre</h2>
+            <p class="note">Items 1 and 2 of every Form F, and the address block of every report.</p>
+            <form id="clinic-form" autocomplete="off">
+              <div class="field"><label for="c-name">Name of the centre <span class="hint">item 1</span></label><div class="inp"><input type="text" id="c-name"></div></div>
+              <div class="field"><label for="c-address">Complete address <span class="hint">item 1</span></label><div class="inp"><input type="text" id="c-address"></div></div>
+              <div class="field"><label for="c-reg">Registration number under the Act <span class="hint">item 2</span></label><div class="inp"><input type="text" id="c-reg"></div></div>
+              <div class="row2">
+                <div class="field"><label for="c-district">District</label><div class="inp"><input type="text" id="c-district"></div></div>
+                <div class="field"><label for="c-state">State</label><div class="inp"><input type="text" id="c-state"></div></div>
+              </div>
+              <div class="field"><label for="c-authority">Appropriate Authority the report goes to <span class="hint">usually the District Appropriate Authority</span></label><div class="inp"><input type="text" id="c-authority"></div></div>
+              <div class="btnrow"><button class="btn primary" type="submit">Save the centre</button></div>
+            </form>
+          </section>
+
+          <section class="card">
+            <h2>The figures this register applies</h2>
+            <p class="note">Every figure below is indicative. Confirm what applies in your district with your Appropriate Authority and change it here if it differs. Nothing in this tool treats its own defaults as law, and none of this is legal advice.</p>
+            <form id="settings-form" autocomplete="off">
+              <div class="field">
+                <label for="s-retention">Retention window, in years <span class="hint">default 2</span></label>
+                <div class="inp"><input type="number" id="s-retention" min="1" max="99" step="1"></div>
+                <p class="src" id="src-retention"></p>
+              </div>
+              <div class="field">
+                <label for="s-due">Report due on this day of the following month <span class="hint">default 5</span></label>
+                <div class="inp"><input type="number" id="s-due" min="1" max="28" step="1"></div>
+                <p class="src" id="src-report"></p>
+              </div>
+              <div class="field">
+                <label for="s-opening">Opening serial number <span class="hint">1 for a new register; the next number after the last paper entry if you are carrying one over</span></label>
+                <div class="inp"><input type="number" id="s-opening" min="1" step="1"></div>
+              </div>
+              <div class="field">
+                <label for="s-person">Person responsible for this record <span class="hint">named on every printed page</span></label>
+                <div class="inp"><input type="text" id="s-person"></div>
+                <p class="src" id="src-printed"></p>
+              </div>
+              <div class="btnrow"><button class="btn primary" type="submit">Save the figures</button></div>
+            </form>
+          </section>
+        </div>
+
+        <section class="card">
+          <h2>What this register does not store</h2>
+          <p class="note">A tool that silently dropped part of a statutory form would be worse than one that never offered the form. Each omission is listed here, printed at the foot of every page, and nowhere hidden.</p>
+          <div id="not-stored"></div>
+        </section>
+
+        <section class="card">
+          <h2>Where the data is</h2>
+          <p class="prose">Everything is in one file on this computer, written by this program and read by nothing else. There is no account, no server and no upload. This program makes no outbound network connections of any kind, so patient data cannot leave the clinic through it — and it must not leave the clinic by any other route either. Back the file up the way you back up the rest of the clinic's records, and keep it on a machine only the centre's own people can reach.</p>
+          <p class="prose">This tool files nothing. It submits nothing and connects to nothing. The monthly report has to be lodged with your Appropriate Authority in the manner that office requires, and that office's requirements govern over anything stated here. It is a record-keeping aid, not advice.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>Form F register · runs on this machine · nothing is sent anywhere</span>
+      <span>A record-keeping aid. Your Appropriate Authority's requirements govern.</span>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

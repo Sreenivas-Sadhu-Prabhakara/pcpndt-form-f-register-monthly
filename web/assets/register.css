@@ -1,0 +1,130 @@
+/* Form F register — the pieces the shared kit does not cover: the standing
+   policy block, a long form grouped by section, wide tables that have to stay
+   readable at 360px, and pages that print as pages. */
+
+.hero.compact { padding: 30px 0 20px; }
+.hero.compact h1 { max-width: 28ch; }
+
+/* The standing statement. It is the first thing on the page on purpose. */
+.policy {
+  margin: 20px 0 0;
+  padding: 14px 16px;
+  background: color-mix(in srgb, var(--tool) 7%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--tool) 32%, var(--line));
+  border-left: 4px solid var(--tool);
+  border-radius: var(--radius);
+  max-width: 76ch;
+}
+.policy h2 { margin: 0 0 6px; font-size: .92rem; color: var(--tool-text); }
+.policy p { margin: 0; font-size: .86rem; color: var(--ink-2); }
+
+.tabs { margin: 22px 0 6px; }
+.panel > .cols { padding-top: 14px; }
+.panel > section.card { margin-bottom: 18px; }
+
+.banner {
+  margin: 14px 0 0; padding: 11px 14px; border-radius: 8px; font-size: .88rem;
+  background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--ok);
+  color: var(--ink);
+}
+.banner.bad { border-left-color: var(--bad); }
+
+/* A long form, read as sections rather than as one column of boxes. */
+.group { margin: 0 0 6px; padding: 0; border: 0; }
+.group > legend {
+  padding: 0; margin: 18px 0 10px; font-size: .82rem; font-weight: 700;
+  letter-spacing: .02em; text-transform: uppercase; color: var(--tool-text);
+}
+.group:first-of-type > legend { margin-top: 0; }
+.field .item {
+  font-family: var(--mono); font-size: .7rem; color: var(--ink-3);
+  border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; margin-right: 6px;
+}
+.field .help { margin: 5px 0 0; font-size: .78rem; color: var(--ink-3); }
+.field.blank > label { color: var(--bad); }
+.field.blank input, .field.blank select, .field.blank textarea { border-color: var(--bad); }
+textarea { width: 100%; font: inherit; font-size: .95rem; padding: 11px 13px; border-radius: 9px;
+  border: 1px solid var(--line-2); background: var(--surface); color: var(--ink); min-height: 76px; resize: vertical; }
+textarea:focus { outline: 2px solid var(--tool); outline-offset: 1px; border-color: var(--tool); }
+.check { display: flex; gap: 9px; align-items: flex-start; }
+.check input { width: 18px; height: 18px; margin: 2px 0 0; flex: none; }
+.check span { font-size: .9rem; color: var(--ink-2); }
+.choices { display: grid; gap: 7px; max-height: 320px; overflow-y: auto; padding: 10px 12px;
+  border: 1px solid var(--line-2); border-radius: 9px; background: var(--surface); }
+.choices label { display: flex; gap: 9px; align-items: flex-start; font-size: .86rem; color: var(--ink-2); }
+.choices input { width: 17px; height: 17px; margin: 2px 0 0; flex: none; }
+.choices .num { font-family: var(--mono); font-size: .74rem; color: var(--ink-3); flex: none; min-width: 3.4em; }
+
+/* Issue lists: the whole shortfall, in the order the form prints the items. */
+.issues { list-style: none; margin: 0; padding: 0; }
+.issues li {
+  padding: 10px 12px; margin-bottom: 8px; border-radius: 8px; font-size: .86rem;
+  background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--warn);
+  color: var(--ink-2);
+}
+.issues li.missing { border-left-color: var(--bad); }
+.issues li.refused { border-left-color: var(--bad); background: color-mix(in srgb, var(--bad) 8%, var(--surface-2)); }
+.issues li .where { display: block; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+.issues li .where .n { font-family: var(--mono); font-size: .76rem; color: var(--ink-3); }
+.ok-line { font-size: .88rem; color: var(--ok); font-weight: 600; }
+
+/* Status strips for the register and the month. */
+.strip { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); margin: 0 0 16px; }
+.strip .cell { padding: 11px 13px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); }
+.strip .cell .k { font-size: .74rem; color: var(--ink-3); }
+.strip .cell .v { font-size: 1.22rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.strip .cell.good .v { color: var(--ok); }
+.strip .cell.warn .v { color: var(--warn); }
+.strip .cell.bad .v { color: var(--bad); }
+
+/* Wide tables stay inside their own scroller rather than stretching the page. */
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.breakdown th { font-size: .78rem; color: var(--ink-3); font-weight: 600; white-space: nowrap; vertical-align: bottom; }
+.breakdown th .src { display: block; font-family: var(--mono); font-size: .66rem; font-weight: 400; color: var(--ink-3); }
+.breakdown td { font-size: .85rem; vertical-align: top; }
+.breakdown td.wrap { min-width: 14ch; }
+.breakdown tr.flagged td { background: color-mix(in srgb, var(--bad) 6%, transparent); }
+.breakdown .tag { font-family: var(--mono); font-size: .72rem; padding: 1px 6px; border-radius: 5px; border: 1px solid var(--line-2); white-space: nowrap; }
+.breakdown .tag.good { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 40%, var(--line)); }
+.breakdown .tag.bad { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 40%, var(--line)); }
+.breakdown .tag.warn { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, var(--line)); }
+.breakdown td .mark { color: var(--bad); font-weight: 700; }
+.breakdown tr.grouphead td { font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .02em; color: var(--tool-text); padding-top: 16px; }
+
+.rowlist { display: grid; gap: 9px; }
+.rowlist button {
+  font: inherit; text-align: left; cursor: pointer; padding: 11px 13px; border-radius: 9px;
+  border: 1px solid var(--line-2); background: var(--surface); color: var(--ink); display: flex;
+  gap: 10px; align-items: baseline; flex-wrap: wrap;
+}
+.rowlist button:hover { border-color: var(--tool); }
+.rowlist button .sl { font-family: var(--mono); font-weight: 700; color: var(--tool-text); }
+.rowlist button .meta { font-size: .8rem; color: var(--ink-3); }
+
+.src { margin: 6px 0 0; font-size: .74rem; color: var(--ink-3); }
+.empty { font-size: .88rem; color: var(--ink-3); margin: 0; }
+
+.notstored { display: grid; gap: 12px; }
+.notstored .one { padding: 12px 14px; border: 1px solid var(--line); border-left: 3px solid var(--tool); border-radius: 8px; background: var(--surface-2); }
+.notstored .one h3 { margin: 0 0 4px; font-size: .88rem; font-family: var(--mono); color: var(--tool-text); }
+.notstored .one p { margin: 0 0 4px; font-size: .84rem; color: var(--ink-2); }
+
+/* At phone width a two-up row leaves neither field usable. */
+@media (max-width: 480px) {
+  .row2 { grid-template-columns: 1fr; }
+  .strip { grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); }
+  .choices { max-height: 260px; }
+  .rowlist button { gap: 6px; }
+}
+
+@media print {
+  .tabs, .banner, .btnrow, .policy h2 { display: none; }
+  .hero.compact { padding: 0 0 10px; border: none; }
+  .hero .lede, .hero .eyebrow { display: none; }
+  .policy { border: 1px solid #999; background: none; margin: 10px 0; }
+  .scroll { overflow: visible; }
+  .breakdown { font-size: 8.5pt; }
+  .breakdown td, .breakdown th { padding: 3px 4px; }
+  .panel[hidden] { display: none !important; }
+  .rowlist, #face-card { display: none; }
+}

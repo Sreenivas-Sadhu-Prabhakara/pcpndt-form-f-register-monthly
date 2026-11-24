@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self'">
+  <title>PCPNDT Form F register and monthly report for ultrasound clinics · Open MSME</title>
+  <meta name="description" content="A free, offline single-binary tool for ultrasound clinics and imaging centres: every Form F checked against the whole prescribed field set at once, a rule 9(1) register in unbroken serial order, the month reconciled against the centre's own day count, and the rule 9(8) monthly report assembled from exactly the month's entries. It records nothing about the sex of a foetus.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="PCPNDT Form F register and monthly report for ultrasound clinics · Open MSME">
+  <meta property="og:description" content="Form F completeness checking that names every missing item at once, unbroken serial numbering, a monthly reconciliation against the OPD count, and a printable register for inspection. Runs on the clinic's own machine; nothing leaves it.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/accent.css">
+  <script src="assets/theme-init.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">
+        <span class="dot"></span><b>Open MSME</b><span class="tag">Form F register</span>
+      </a>
+      <span class="sp"></span>
+      <a class="home" href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">All tools</a>
+      <button class="themer" data-themer type="button">Theme</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Healthcare &amp; diagnostics · India</div>
+        <h1>PCPNDT Form F register and monthly report for ultrasound clinics</h1>
+        <p class="lede">A free, offline tool for ultrasound clinics and imaging centres. Every Form F is checked against the whole prescribed field set in one pass, the register runs in unbroken serial order, the month is reconciled against the centre's own day count so that a form nobody wrote gets found, and the monthly report is assembled from exactly the entries dated in that month.</p>
+        <div class="who">
+          <span class="pill">Ultrasound clinics and imaging centres</span>
+          <span class="pill">Radiology and sonography centres</span>
+          <span class="pill">India</span>
+          <span class="pill reg">PC&amp;PNDT Act 1994 · Form F · PNDT Rules 1996, r.9(1), r.9(4), r.9(7), r.9(8)</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap prose">
+
+      <div class="note">
+        <b>What this tool will not do.</b> It does not record, infer, derive, display, print or export the sex of a foetus. There is no field for it, no coded value that stands for it, no note that carries it and no report that totals it, and there never will be. The free-text clinical fields are checked before an entry is stored, and an entry carrying such a term is refused with the term named rather than saved with a warning. A test in the repository walks every field, label, column heading and generated page and fails the build if any of them so much as names the subject. The Act this register serves exists to stop sex selection and the destruction of unborn girls that follows from it, and a tool built around its paperwork has to be built so that it cannot be turned to that purpose.
+      </div>
+
+      <h2>What it does</h2>
+      <p>The proviso to section 4(3) of the Act is the whole reason this tool exists. It says that the person conducting an ultrasound on a pregnant woman shall keep a complete record of it, and that <em>any deficiency or inaccuracy found therein shall amount to a contravention of section 5 or section 6 unless the contrary is proved</em> by the person who conducted it. A blank field is not a clerical slip that earns a warning letter. It shifts the burden of proof onto the sonologist, and the exposure behind it runs from prosecution under section 23 through suspension of the centre's registration under section 20 to the seizure and sealing of records and equipment under section 30 read with rule 12.</p>
+      <p>So completeness checking is the product, not a feature of it:</p>
+      <ul>
+        <li><b>Every missing item at once.</b> Checking an entry walks the entire field set and names every mandatory item that is blank, in the order the form prints them, with the item number beside each one. Not the first blank — all of them. A checker that reported one problem at a time would turn a two-minute correction into eleven trips back to the desk.</li>
+        <li><b>What can only be wrong in combination.</b> A declaration dated after the procedure it was supposed to precede. A gestational age that does not follow from the stated last menstrual period. A referral that is neither named nor a self-referral. An entry signed by somebody other than the person who performed the scan. A thumb impression with nobody attesting it. An invasive technique written into Section B by a centre not registered to perform one.</li>
+        <li><b>Serial integrity.</b> The register assigns its own numbers and never accepts one typed by hand, never reissues a number left free by a gap, and has no way at all to remove an entry — a gap in a register reads as a page torn out, so the tool offers no means of making one. Gaps, repeats, numbers outside the register's own range and entries dated backwards against their numbers are all reported in full, in plain words.</li>
+        <li><b>A month that is actually complete.</b> A Form F that was never written is invisible to a register that does not hold it. The Ministry's own inspection guidance settles the question by tallying Form F against the OPD register, so this tool asks the centre for its own day count and reconciles the two day by day. Three scans counted on the 14th against two Form F entries dated the 14th is the finding an inspection would make — found a fortnight earlier, by the centre itself.</li>
+        <li><b>Retention worked out per entry.</b> Two years from the date the procedure was completed, with calendar-correct arithmetic, so a procedure on 29 February has its deadline clamped to 28 February two years later rather than pushed into March. An entry with proceedings noted against it never shows as releasable.</li>
+        <li><b>Pages to print.</b> The rule 9(1) register in its statutory column order, the face of any single Form F item by item with the blanks marked, and the month's report — each with the authentication block rule 9(7) calls for when records are kept on a computer.</li>
+      </ul>
+
+      <h2>Who it's for</h2>
+      <p>Ultrasound clinics, imaging centres, radiology and sonography practices, and OB-GYN practices with their own machine — anywhere in India, registered under the Act, keeping Form F for every obstetric procedure and sending a monthly report to a District Appropriate Authority. One or two machines, a few scans a day, a register that is currently a stack of loose paper and a quarterly inspection nobody looks forward to.</p>
+      <p>It is not for genetic clinics performing invasive procedures. Section C of Form F — items 17 to 27, covering amniocentesis, chorionic villi aspiration, foetal biopsy, cordocentesis and the Form G consent for them — is deliberately not reproduced here, because a centre registered for ultrasound alone is not registered to perform any of them and offering the fields would invite an entry nobody is entitled to make.</p>
+
+      <h2>The rule it implements</h2>
+      <p>The <b>Pre-conception and Pre-natal Diagnostic Techniques (Prohibition of Sex Selection) Act, 1994</b> and the <b>PNDT Rules, 1996</b>, as amended. Specifically:</p>
+      <ul>
+        <li><b>Rule 9(4)</b> — the record to be maintained in respect of each person subjected to a pre-natal diagnostic procedure, technique or test is as specified in <b>Form F</b>. The form in force was substituted by <b>G.S.R. 77(E) dated 31 January 2014, with effect from 4 February 2014</b>; it prints 27 numbered items in four sections and carries the citation <code>[see proviso to section 4(3), rule 9(4) and rule 10(1A)]</code>. This tool keeps Sections A, B and D.</li>
+        <li><b>Proviso to section 4(3)</b> — a complete record is to be kept, and any deficiency or inaccuracy in it amounts to a contravention of section 5 or section 6 unless the contrary is proved.</li>
+        <li><b>Rule 10(1A)</b> — the two declarations the form carries: one by the person undergoing the procedure, and one by the person conducting it, on each report.</li>
+        <li><b>Rule 9(1)</b> — a register showing, <em>in serial order</em>, the names and addresses of the women subjected to a procedure, the name of the spouse or father, and the date on which they first reported. That register is the page this tool prints for inspection, with exactly those columns. Form F itself has no serial-number item.</li>
+        <li><b>Rule 9(6)</b> and <b>section 29(1)</b> — records preserved for <b>two years from the date of completion of the procedure or test</b>, and until the final disposal of any legal proceedings or the expiry of those two years, whichever is later.</li>
+        <li><b>Rule 9(7)</b> — where records are maintained on a computer, a printed copy is taken and preserved after authentication by a person responsible for the record. Every page this tool produces carries that authentication block.</li>
+        <li><b>Rule 9(8)</b> (inserted in 2003) — a complete report of all pre-conception and pregnancy-related procedures conducted in each month, sent to the concerned Appropriate Authority <b>by the 5th day of the following month</b>.</li>
+        <li><b>Section 17</b> — the Appropriate Authority, appointed for the whole or part of a state. For an ultrasound clinic the counterparty is almost always the District Appropriate Authority. This tool holds that office's name as plain text you fill in, because it is set by state notification and nothing should be hard-coded.</li>
+      </ul>
+
+      <h2>Install &amp; run</h2>
+      <pre><code>git clone https://github.com/sreenivas-sadhu-prabhakara/pcpndt-form-f-register-monthly.git
+cd pcpndt-form-f-register-monthly
+
+# build a single binary with no dependencies
+go build -o form-f-register .
+./form-f-register
+
+# or run it straight from the source
+go run .
+
+# then open
+http://127.0.0.1:8080
+
+# a different port, and a register file kept somewhere specific
+./form-f-register -addr 127.0.0.1:9000 -data /srv/clinic/form-f-register.json</code></pre>
+      <p>It needs Go 1.25 to build and nothing else — no database, no server, no container, no account. It binds to 127.0.0.1, so it answers only to the machine it runs on.</p>
+
+      <h2>What it stores, and where</h2>
+      <p>Everything goes into one JSON file on the same machine, written atomically and with file permissions that keep it to the account that owns it. There is no account, no sync and no upload. The program makes <b>no outbound network connections of any kind</b> — no telemetry, no analytics, no fonts or scripts fetched from anywhere, no check for updates.</p>
+      <p><b>Patient data must not leave the clinic.</b> This register holds names, ages, addresses, telephone numbers and clinical findings for pregnant women, which is about as sensitive as a small business's records get. Keep the file on a machine only the centre's own people can reach, back it up the way you back up the rest of the clinic's records, and do not put it on a shared drive, a personal laptop, a messaging app or any cloud folder. This tool gives the data no way out; the rest is the centre's to protect.</p>
+      <p>It also stores one item less than the form asks for, and says so on every page it prints. Item 4 of Form F asks for the total number of living children and then splits that total two ways, giving the age of each child in each part. This register holds the total and the ages and stops there. It keeps no field that splits a household's children the way item 4 splits them — not a column, not a count, not a coded value. That split is the thing the Act exists to stop anyone acting on, and a clinic computer holding it for every household in the district would be a list of precisely the wrong kind. It is completed on the signed Form F the centre keeps, which is the document the Appropriate Authority inspects. The same reasoning applies to one sub-field of the thumb-impression block in Section D.</p>
+
+      <h2>Features</h2>
+      <div class="featgrid">
+        <div class="feat"><h3>Every blank, at once</h3><p>One check names every mandatory item left empty, in the order the form prints them, each with its item number. Thirty items apply to a typical entry; all thirty are reported in one response.</p></div>
+        <div class="feat"><h3>The form, item by item</h3><p>Sections A, B and D of the 2014 Form F, with the item numbers printed on the page so a blank can be found on the paper form without counting down it.</p></div>
+        <div class="feat"><h3>Contradiction checks</h3><p>Consent and declaration dates against the procedure date, weeks of pregnancy against the stated last menstrual period, the signatory against the person who performed the scan, the referral against the self-referral tick.</p></div>
+        <div class="feat"><h3>No way to tear a page out</h3><p>Serials are assigned by the register, never reissued, and never deletable. There is no endpoint, button or flag that removes an entry.</p></div>
+        <div class="feat"><h3>Gaps reported loudly</h3><p>Missing numbers are reported as runs — "serials 34 to 37 are missing, 4 entries" — alongside repeats, numbers from an earlier paper register, and entries dated backwards against their numbers.</p></div>
+        <div class="feat"><h3>Monthly reconciliation</h3><p>The centre's own day count from the OPD register against the Form F entries dated that day, day by day, with every shortfall named. This is how a form that was never written gets found.</p></div>
+        <div class="feat"><h3>A report that refuses to lie</h3><p>Assembled from exactly the entries dated in the month. While anything is blank, missing or out of sequence it is marked not ready to send, with the reasons listed.</p></div>
+        <div class="feat"><h3>Retention per entry</h3><p>Two years from the procedure date, calendar-correct through leap days, with a per-entry hold-until date. Proceedings noted against an entry make it open-ended.</p></div>
+        <div class="feat"><h3>Printed and authenticated</h3><p>The rule 9(1) register, any single Form F face, and the month's report — each with the rule 9(7) authentication block naming the person responsible.</p></div>
+        <div class="feat"><h3>Free text that is checked</h3><p>Six free-text fields are screened before an entry is stored. Clinical language is left alone: "fetal heart rate" and "beta hCG" pass. What the Act prohibits does not.</p></div>
+        <div class="feat"><h3>Your inspection sample</h3><p>Thirty forms or a tenth of the register, whichever is more, as the Ministry's guidance for District Appropriate Authorities directs. The register tells you the number.</p></div>
+        <div class="feat"><h3>Carries over from paper</h3><p>Set the opening serial to the next number after your last paper entry and the numbering continues rather than restarting at one.</p></div>
+      </div>
+
+      <h2>The figures it applies, and where they come from</h2>
+      <p>Every statutory figure is a named constant in one place in the source, is listed here, and can be changed in the tool's own settings if what applies in your district differs. None of them is treated as authoritative by the tool itself.</p>
+      <ul>
+        <li><b>Retention: 2 years</b>, from the date the procedure was completed. Rule 9(6) of the PNDT Rules 1996 puts it at two years from the date of completion of the counselling, procedure or test; section 29(1) of the Act requires the same two years for all records, charts, forms, reports and consent letters, leaving room for a longer period to be prescribed. No longer period has been prescribed. Overridable.</li>
+        <li><b>Monthly report: by the 5th day of the following month.</b> Rule 9(8), inserted by G.S.R. 109(E) of 14 February 2003. Overridable, because states run their own filing arrangements on top of the rule.</li>
+        <li><b>Inspection sample: 30 forms or 10%, whichever is more.</b> From the Ministry of Health and Family Welfare's Standard Operating Guidelines for District Appropriate Authorities.</li>
+        <li><b>Advanced maternal age: 35 years</b>, as item 19B of the form words it. The tool notes it and requires nothing from it.</li>
+      </ul>
+      <p>The date arithmetic is calendar-correct and tested on the awkward cases: a two-year window on a procedure completed 29 February 2024 runs to 28 February 2026, not 1 March; the hold-until date is inclusive, so the register does not call that entry releasable until 1 March 2026; a report due on day 5 of the following month lands correctly across December into January.</p>
+
+      <h2>What we could not confirm, and are not going to invent</h2>
+      <p>Three things are genuinely unsettled, and the tool says so rather than filling the gap with a guess.</p>
+      <ul>
+        <li><b>There is no prescribed format for the monthly report.</b> Rule 9(8) requires "a complete report in respect of all pre-conception or pregnancy related procedures/techniques/tests conducted by them in respect of each month" and prescribes no form for it. Districts and states direct variously that it be filed as copies of the month's Form F, as a consolidated statement, or both, and several states run their own online portal with its own cut-off. This tool therefore assembles a complete month pack — a covering summary, the day-by-day reconciliation and the month's entries — and tells you to copy it onto whatever format your Appropriate Authority requires. It does not imitate any one state's form.</li>
+        <li><b>Online filing is a state direction, not a rule.</b> There is no online-filing provision anywhere in the central Rules. What rule 9(7) does require is that a record kept on a computer be printed and authenticated by the person responsible for it. Where your state mandates online Form F submission, that is in addition to the signed physical form, not instead of it.</li>
+        <li><b>The exact typography of Form F varies between reproductions.</b> The field set here was taken from the 2014 gazette text and cross-checked against three independent government reproductions that agree with each other, but reproductions differ among themselves on spelling — "fetal" against "foetal" within the same printed list — and on punctuation. Nothing of substance has been reworded, and one indication is phrased in current medical terms where the form uses an older phrasing. If the form in circulation in your state words an item differently, treat the form in your inspection file as the authority and use the free-text box beside the indication list.</li>
+      </ul>
+
+      <div class="note">
+        <b>Scope and honesty.</b> This is a record-keeping aid that runs on your own computer. It is not legal advice, it is not endorsed by or connected to any authority, and it <b>files nothing</b> — it submits nothing, sends nothing and connects to nothing. Your Appropriate Authority's requirements govern over anything this tool states, and the signed Form F, the written consent, the referral slip and the case papers held at the centre remain the records that are inspected; these pages index them and do not replace them. The statutory figures above are indicative and were correct to the best of our research at the time of writing: confirm what applies in your district with your Appropriate Authority before relying on any of them. Nothing here prevents an offence, and nothing here is a defence to one.
+      </div>
+
+      <h2>Open source</h2>
+      <p>MIT licensed. One Go file plus a domain package of pure functions with table-driven tests, no third-party dependencies, no <code>require</code> block in <code>go.mod</code>. Read it, change it, run it on the clinic's own machine.</p>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>Open MSME · free tools for small businesses in India and the Philippines</span>
+      <span><a href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">All tools</a> · MIT licensed</span>
+    </div>
+  </footer>
+
+  <script src="assets/ui.js"></script>
+</body>
+</html>
